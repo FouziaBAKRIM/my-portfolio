@@ -23,4 +23,4 @@ Node 24 or newer is required. The package manager is pnpm.
 
 ## Content
 
-Change copy, links, projects, jobs, education, and skills in `data/index.ts`. Do not hard-code that text in components. `siteConfig.url` is still `https://TODO` until the live address is known. Replace it after the first deploy so the share tags, sitemap, and robots file point at the real site.
+Change copy, links, projects, jobs, education, and skills in `data/index.ts`. Do not hard-code that text in components. The share tags, sitemap, and robots file read `siteConfig.url`, so update it if the live address changes.

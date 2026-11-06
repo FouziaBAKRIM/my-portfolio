@@ -10,11 +10,8 @@ import type {
 
 export const siteConfig = {
   title: 'Fouzia Bakrim — Data Analyst',
-  /**
-   * TODO: replace this with the live address after the first Vercel deploy.
-   * The title, description, sitemap, robots file, and share tags all read it.
-   */
-  url: 'https://TODO',
+  /** The canonical URL, sitemap, robots file, and share tags all read this. */
+  url: 'https://fouziabakrim.vercel.app',
   description:
     'Fouzia Bakrim is a data analyst in Casablanca who turns complex data into meaningful insights through analysis, visualization, and data-driven solutions.',
   language: 'en',
