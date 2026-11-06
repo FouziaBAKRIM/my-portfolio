@@ -1,6 +1,6 @@
 # Portfolio
 
-One-page Next.js site for Fouzia Bakrim. The visual source of truth is `portfolio.html`. Do not redesign it.
+One-page Next.js site for Fouzia Bakrim.
 
 ## Commands
 

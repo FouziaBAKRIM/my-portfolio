@@ -52,8 +52,19 @@ export const hero = {
   followLabel: 'Follow',
   linkedinLabel: 'LinkedIn',
   githubLabel: 'GitHub',
-  cvLabel: 'Download CV',
-  connectLabel: 'Connect:',
+  cvLabel: 'View CV',
+};
+
+export const cv = {
+  title: 'Curriculum Vitae',
+  file: '/cv.pdf',
+  closeLabel: 'Close',
+  downloadLabel: 'Download',
+  loadingLabel: 'Loading CV…',
+  errorLabel: 'The CV could not be displayed here. You can still download it.',
+  zoomInLabel: 'Zoom in',
+  zoomOutLabel: 'Zoom out',
+  pageLabel: 'CV page',
 };
 
 export const about = {
@@ -95,22 +106,19 @@ export const skills = {
   title: 'Core Capabilities & Toolkit',
   intro:
     'End-to-end capabilities spanning data modeling, analytical engineering, and visual intelligence.',
-  previousLabel: 'Previous Slide',
-  nextLabel: 'Next Slide',
   groups: [
     {
       title: 'Programming & Data Analysis',
       description:
         'Writing clean, performant code to clean datasets, automate recurring routines, and detect operational anomalies.',
-      icon: 'brackets',
+      icon: 'code',
       tags: ['Python', 'Pandas', 'NumPy', 'SQL'],
-      tagClassName: 'px-3.5 py-1.5',
     },
     {
       title: 'Data Visualization & BI',
       description:
         'Transforming raw tables into interactive, responsive dashboards built for executive and operational decision-making.',
-      icon: 'chart',
+      icon: 'bar_chart',
       tags: [
         'Power BI',
         'DAX',
@@ -119,7 +127,6 @@ export const skills = {
         'Looker Studio',
         'Excel',
       ],
-      tagClassName: 'px-3 py-1.5',
     },
     {
       title: 'Databases & Data Engineering',
@@ -135,54 +142,21 @@ export const skills = {
         'Git',
         'GitHub',
       ],
-      tagClassName: 'px-3 py-1.5',
     },
   ] satisfies SkillGroup[],
   toolbox: {
     eyebrow: 'MY TOOLBOX',
     title: 'Technologies & Tools',
     intro: 'Industry-standard technologies applied in production environments.',
-    rows: [
-      [
-        {
-          mark: 'Py',
-          markClassName: 'font-mono text-[11px] font-bold text-amber-400',
-          label: 'Python',
-        },
-        {
-          mark: 'SQL',
-          markClassName: 'font-mono text-[10px] font-bold text-sky-400',
-          label: 'SQL Server',
-        },
-        {
-          mark: 'BI',
-          markClassName: 'font-mono text-[10px] font-bold text-yellow-400',
-          label: 'Power BI',
-        },
-        {
-          mark: 'DAX',
-          markClassName: 'font-mono text-[10px] font-bold text-emerald-400',
-          label: 'DAX Modeling',
-        },
-        {
-          mark: 'Pg',
-          markClassName: 'font-mono text-[10px] font-bold text-indigo-400',
-          label: 'PostgreSQL',
-        },
-      ],
-      [
-        {
-          mark: 'Tab',
-          markClassName: 'font-mono text-[10px] font-bold text-teal-400',
-          label: 'Tableau',
-        },
-        {
-          mark: 'Git',
-          markClassName: 'font-mono text-[10px] font-bold text-orange-400',
-          label: 'Git & GitHub',
-        },
-      ],
-    ] satisfies Tool[][],
+    tools: [
+      { mark: 'Py', label: 'Python' },
+      { mark: 'SQL', label: 'SQL Server' },
+      { mark: 'BI', label: 'Power BI' },
+      { mark: 'DAX', label: 'DAX Modeling' },
+      { mark: 'Pg', label: 'PostgreSQL' },
+      { mark: 'Tab', label: 'Tableau' },
+      { mark: 'Git', label: 'Git & GitHub' },
+    ] satisfies Tool[],
   },
 };
 
@@ -201,7 +175,6 @@ export const projects: Project[] = [
     metricTitle: '+18.4% YoY Margin Visibility',
     metricNote: 'Executive Reporting Automated',
     metricStatus: '100% Reconciliation',
-    statusDotClassName: 'bg-amber-400',
     title: 'Retail Store Sales & Profitability Analysis',
     description:
       'Performed data cleaning with Python Pandas, structured SQL storage routines, and developed an interactive Power BI dashboard tracking store margins and customer segments.',
@@ -217,7 +190,6 @@ export const projects: Project[] = [
     metricTitle: 'End-to-End Orchestrated Pipeline',
     metricNote: 'Pandera Schema Validated',
     metricStatus: 'K-Means Clustering',
-    statusDotClassName: 'bg-emerald-400',
     title: 'E-Commerce Customer Segmentation Pipeline',
     description:
       'Engineered an end-to-end customer segmentation pipeline utilizing an orchestration script executing data cleaning, metrics generation, schema validation via Pandera, and K-Means behavioral clustering.',
@@ -240,7 +212,6 @@ export const projects: Project[] = [
     metricTitle: 'Real-Time Sensor Ingestion',
     metricNote: 'Multi-Metric Tracking',
     metricStatus: 'Dynamic Dashboards',
-    statusDotClassName: 'bg-sky-400',
     title: 'IoT Athletic Activity & Physical Metrics Framework',
     description:
       'Designed an IoT athletic activity analysis framework collecting physical metrics via integrated Python processing and interactive Power BI visual dashboards.',
@@ -335,7 +306,7 @@ export const contact = {
   status: 'Open to Work • Data Analyst',
   closing:
     '✦ Thank you for visiting my portfolio! Turning complex data into meaningful insights. ✦',
-  copyright: '© 2025 Fouzia Bakrim. All rights reserved.',
+  copyright: 'Fouzia Bakrim. All rights reserved.',
   backToTop: 'Back to Top',
 };
 

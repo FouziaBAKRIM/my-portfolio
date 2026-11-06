@@ -11,14 +11,12 @@ export type NavLink = {
 export type SkillGroup = {
   title: string;
   description: string;
-  icon: 'brackets' | 'chart' | 'database';
+  icon: 'code' | 'bar_chart' | 'database';
   tags: string[];
-  tagClassName: string;
 };
 
 export type Tool = {
   mark: string;
-  markClassName: string;
   label: string;
 };
 
@@ -29,7 +27,6 @@ export type Project = {
   metricTitle: string;
   metricNote: string;
   metricStatus: string;
-  statusDotClassName: string;
   title: string;
   description: string;
   tags: string[];

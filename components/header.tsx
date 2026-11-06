@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { hero, navLinks, profile } from '@/data';
+import { cv, hero, navLinks, profile } from '@/data';
 import { cn } from '@/lib/utils';
 import {
   GitHubIcon,
@@ -9,31 +9,35 @@ import {
   MailIcon,
   SymbolIcon,
 } from '@/components/icons';
+import { CvViewer } from '@/components/cv-viewer';
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [activeId, setActiveId] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
+  const [cvOpen, setCvOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
-      const scrollPos = window.scrollY;
-      setScrolled(scrollPos > 12);
-
-      let currentSectionId = '';
-      document.querySelectorAll('section[id]').forEach((section) => {
-        const top = (section as HTMLElement).offsetTop - 120;
-        const height = (section as HTMLElement).offsetHeight;
-        if (scrollPos >= top && scrollPos < top + height) {
-          currentSectionId = section.getAttribute('id') ?? '';
-        }
-      });
-      setActiveId(currentSectionId);
-    };
-
+    const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    // The active section is whichever one crosses a line 40% down the viewport.
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActiveId(entry.target.id);
+        }
+      },
+      { rootMargin: '-40% 0px -60% 0px' },
+    );
+    document
+      .querySelectorAll('section[id], footer[id]')
+      .forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -48,7 +52,7 @@ export function Header() {
     <header id="main-header" className="sticky top-0 z-50 px-4 pt-3 sm:px-6">
       <div
         className={cn(
-          'mx-auto max-w-7xl rounded-[1.75rem] border border-white/80 bg-cream-light/75 shadow-editorial backdrop-blur-xl transition-all duration-300',
+          'mx-auto max-w-6xl rounded-[1.75rem] border border-white/80 bg-cream-light/75 shadow-editorial backdrop-blur-xl transition-all duration-300',
           scrolled && 'border-navy/10 bg-cream-light/92 shadow-editorial-hover',
         )}
       >
@@ -122,14 +126,19 @@ export function Header() {
                 <GitHubIcon className="h-4 w-4" />
               </a>
             </div>
+            {/* A real link, so the PDF still opens before or without JavaScript. */}
             <a
-              href="#contact"
-              onClick={() => setMenuOpen(false)}
+              href={cv.file}
+              onClick={(event) => {
+                event.preventDefault();
+                setMenuOpen(false);
+                setCvOpen(true);
+              }}
               className="inline-flex items-center gap-1.5 rounded-full bg-navy px-3.5 py-2 text-sm font-medium text-cream shadow-xs transition-all duration-300 hover:bg-navy-light hover:shadow-md sm:px-4"
             >
               <span className="hidden sm:inline">{hero.cvLabel}</span>
               <span className="sm:hidden">CV</span>
-              <SymbolIcon name="download" className="text-[16px]" />
+              <SymbolIcon name="arrow_forward" className="text-[16px]" />
             </a>
             <button
               type="button"
@@ -179,7 +188,7 @@ export function Header() {
                   setMenuOpen(false);
                   const target = document.getElementById(id);
                   window.setTimeout(() => {
-                    target?.scrollIntoView({ behavior: 'smooth' });
+                    target?.scrollIntoView();
                     history.pushState(null, '', link.href);
                   }, 40);
                 }}
@@ -223,6 +232,7 @@ export function Header() {
           </div>
         </nav>
       </div>
+      {cvOpen ? <CvViewer onClose={() => setCvOpen(false)} /> : null}
     </header>
   );
 }

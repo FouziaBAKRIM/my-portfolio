@@ -5,14 +5,12 @@ import '@/css/tailwind.css';
 
 const inter = Inter({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
   variable: '--font-body',
   display: 'swap',
 });
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
   style: ['normal', 'italic'],
   variable: '--font-playfair',
   display: 'swap',
@@ -20,9 +18,9 @@ const playfair = Playfair_Display({
 
 const jetbrains = JetBrains_Mono({
   subsets: ['latin'],
-  weight: ['400', '500', '600'],
   variable: '--font-jetbrains',
   display: 'swap',
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -56,6 +54,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
+  themeColor: '#f5f0e6',
 };
 
 export default function RootLayout({
@@ -66,7 +65,8 @@ export default function RootLayout({
   return (
     <html
       lang={siteConfig.language}
-      className={`${inter.variable} ${playfair.variable} ${jetbrains.variable} scroll-smooth`}
+      className={`${inter.variable} ${playfair.variable} ${jetbrains.variable} motion-safe:scroll-smooth`}
+      data-scroll-behavior="smooth"
     >
       <body className="relative bg-cream font-sans text-charcoal antialiased selection:bg-sage selection:text-navy">
         {children}
