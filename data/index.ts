@@ -101,22 +101,22 @@ export const skills = {
     {
       title: 'Programming & Data Analysis',
       description:
-        'Writing clean, performant code to clean datasets, automate recurring routines, and detect operational anomalies.',
+        'Writing clean, performant code to clean datasets, automate recurring routines, build schema validation pipelines, and perform machine learning segmentation.',
       icon: 'brackets',
-      tags: ['Python', 'Pandas', 'NumPy', 'SQL'],
-      tagClassName: 'px-3.5 py-1.5',
+      tags: ['Python', 'Pandas', 'NumPy', 'Scikit-Learn', 'Pandera', 'SQL'],
+      tagClassName: 'px-3 py-1.5',
     },
     {
       title: 'Data Visualization & BI',
       description:
-        'Transforming raw tables into interactive, responsive dashboards built for executive and operational decision-making.',
+        'Transforming raw tables into multi-block, interactive Power BI dashboards built to contrast deterministic business logic against algorithmic machine learning clusters.',
       icon: 'chart',
       tags: [
         'Power BI',
         'DAX',
         'Interactive Dashboards',
-        'Tableau',
-        'Looker Studio',
+        'KPI Modeling',
+        'Data Storytelling',
         'Excel',
       ],
       tagClassName: 'px-3 py-1.5',
@@ -124,18 +124,46 @@ export const skills = {
     {
       title: 'Databases & Data Engineering',
       description:
-        'Relational schema design, dimensional modeling (Star & Snowflake schemas), and continuous data pipeline automation.',
+        'Relational schema design, dimensional modeling, automated ETL workflows, and continuous data pipeline management across production database environments.',
       icon: 'database',
+      tags: ['SQL', 'SQL Server', 'PostgreSQL', 'ETL Pipelines', 'Data Hub'],
+      tagClassName: 'px-3.5 py-1.5',
+    },
+    {
+      title: 'Machine Learning & Predictive Analytics',
+      description:
+        'Developing unsupervised clustering models, RFM customer segmentation pipelines, and predictive algorithms to unearth hidden operational patterns in enterprise data.',
+      icon: 'model',
       tags: [
-        'SQL Server',
-        'PostgreSQL',
-        'MySQL',
-        'Oracle',
-        'MongoDB',
-        'Git',
-        'GitHub',
+        'Scikit-Learn',
+        'RFM Analysis',
+        'K-Means Clustering',
+        'Customer Segmentation',
+        'Python',
       ],
       tagClassName: 'px-3 py-1.5',
+    },
+    {
+      title: 'Data Governance & Quality Control',
+      description:
+        'Establishing enterprise metric standards, implementing schema validation rules, writing functional specifications, and conducting system reliability testing.',
+      icon: 'shield',
+      tags: [
+        'Data Quality Assurance',
+        'DataHub',
+        'Schema Validation',
+        'Functional Specifications',
+        'System Testing',
+      ],
+      tagClassName: 'px-3 py-1.5',
+    },
+    {
+      title: 'Analytics Engineering & Developer Tools',
+      description:
+        'Managing collaborative codebase repositories, configuring deployment environments, and maintaining clean, version-controlled developer workflows.',
+      icon: 'code',
+      tags: ['Git', 'GitHub', 'Cursor', 'VS Code', 'Vercel', 'Linux/Bash'],
+      tagClassName: 'px-3.5 py-1.5',
     },
   ] satisfies SkillGroup[],
   toolbox: {

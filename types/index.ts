@@ -11,7 +11,7 @@ export type NavLink = {
 export type SkillGroup = {
   title: string;
   description: string;
-  icon: 'brackets' | 'chart' | 'database';
+  icon: 'brackets' | 'chart' | 'database' | 'model' | 'shield' | 'code';
   tags: string[];
   tagClassName: string;
 };

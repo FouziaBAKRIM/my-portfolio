@@ -1,8 +1,85 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import { skills } from '@/data';
+import type { SkillGroup } from '@/types';
 import { cn } from '@/lib/utils';
 import { SymbolIcon } from '@/components/icons';
 
+const cardGap = '1.5rem';
+
+function cardsPerView(width: number) {
+  if (width >= 1024) return 3;
+  if (width >= 640) return 2;
+  return 1;
+}
+
+function SkillIcon({ icon }: { icon: SkillGroup['icon'] }) {
+  if (icon === 'brackets') {
+    return <span className="font-mono text-sm font-bold">{'</>'}</span>;
+  }
+  if (icon === 'chart') return <span>📊</span>;
+  if (icon === 'database') {
+    return <SymbolIcon name="database" className="text-[22px] text-navy" />;
+  }
+  if (icon === 'model') {
+    return (
+      <svg
+        viewBox="0 0 24 24"
+        className="h-[22px] w-[22px] text-navy"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        aria-hidden="true"
+      >
+        <circle cx="6" cy="7" r="2.2" />
+        <circle cx="17" cy="6" r="2.2" />
+        <circle cx="12" cy="17" r="2.2" />
+        <path d="M8 8.2 10.4 15M15.2 7.6 13.4 15" />
+      </svg>
+    );
+  }
+  if (icon === 'shield') {
+    return (
+      <svg
+        viewBox="0 0 24 24"
+        className="h-[22px] w-[22px] text-navy"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M12 3.5 19 6.2v5.3c0 4.2-2.8 7.2-7 8.9-4.2-1.7-7-4.7-7-8.9V6.2L12 3.5Z" />
+        <path d="m9 12 2 2 4-4.2" />
+      </svg>
+    );
+  }
+  return <SymbolIcon name="code" className="text-[22px] text-navy" />;
+}
+
 export function Skills() {
+  const groups = skills.groups;
+  const [index, setIndex] = useState(0);
+  const [perView, setPerView] = useState(3);
+
+  useEffect(() => {
+    const update = () => setPerView(cardsPerView(window.innerWidth));
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
+
+  const maxIndex = Math.max(0, groups.length - perView);
+  const slide = Math.min(index, maxIndex);
+  const cardWidth = `calc((100% - ${perView - 1} * ${cardGap}) / ${perView})`;
+
+  const goTo = (next: number) => {
+    const last = Math.max(0, groups.length - perView);
+    setIndex((next + last + 1) % (last + 1));
+  };
+
   return (
     <section
       id="skills"
@@ -26,6 +103,7 @@ export function Skills() {
               <button
                 type="button"
                 aria-label={skills.previousLabel}
+                onClick={() => goTo(slide - 1)}
                 className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-taupe/30 bg-white text-charcoal shadow-xs outline-hidden transition-all hover:bg-navy hover:text-white"
               >
                 <SymbolIcon name="arrow_back" className="text-[18px]" />
@@ -33,6 +111,7 @@ export function Skills() {
               <button
                 type="button"
                 aria-label={skills.nextLabel}
+                onClick={() => goTo(slide + 1)}
                 className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-taupe/30 bg-white text-charcoal shadow-xs outline-hidden transition-all hover:bg-navy hover:text-white"
               >
                 <SymbolIcon name="arrow_forward" className="text-[18px]" />
@@ -41,53 +120,68 @@ export function Skills() {
           </div>
         </div>
 
-        <div className="mb-10 grid grid-cols-1 gap-6 lg:grid-cols-3">
-          {skills.groups.map((group) => (
-            <div
-              key={group.title}
-              className="group flex flex-col justify-between rounded-2xl border border-taupe/25 bg-white p-8 shadow-editorial transition-all duration-300 hover:-translate-y-1 hover:shadow-editorial-hover"
-            >
-              <div>
-                <div className="mb-6 flex h-11 w-11 items-center justify-center rounded-xl border border-taupe/30 bg-cream text-lg text-charcoal">
-                  {group.icon === 'brackets' ? (
-                    <span className="font-mono text-sm font-bold">{'</>'}</span>
-                  ) : null}
-                  {group.icon === 'chart' ? <span>📊</span> : null}
-                  {group.icon === 'database' ? (
-                    <SymbolIcon
-                      name="database"
-                      className="text-[22px] text-navy"
-                    />
-                  ) : null}
+        <div className="mb-10 overflow-hidden py-2">
+          <div
+            className="flex items-stretch transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] motion-reduce:transition-none"
+            style={{
+              gap: cardGap,
+              transform: `translateX(calc(${slide} * -1 * (${cardWidth} + ${cardGap})))`,
+            }}
+          >
+            {groups.map((group) => (
+              <div
+                key={group.title}
+                className="group flex flex-col justify-between rounded-2xl border border-taupe/25 bg-white p-8 shadow-editorial transition-all duration-300 hover:-translate-y-1 hover:shadow-editorial-hover"
+                style={{ flex: `0 0 ${cardWidth}` }}
+              >
+                <div>
+                  <div className="mb-6 flex h-11 w-11 items-center justify-center rounded-xl border border-taupe/30 bg-cream text-lg text-charcoal">
+                    <SkillIcon icon={group.icon} />
+                  </div>
+                  <h3 className="mb-4 font-serif text-2xl leading-snug font-bold tracking-tight text-navy">
+                    {group.title}
+                  </h3>
+                  <p className="mb-8 text-sm leading-relaxed text-charcoal/75">
+                    {group.description}
+                  </p>
                 </div>
-                <h3 className="mb-4 font-serif text-2xl leading-snug font-bold tracking-tight text-navy">
-                  {group.title}
-                </h3>
-                <p className="mb-8 text-sm leading-relaxed text-charcoal/75">
-                  {group.description}
-                </p>
+                <div className="flex flex-wrap gap-2 border-t border-taupe/15 pt-6">
+                  {group.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className={cn(
+                        'rounded-lg border border-taupe/25 bg-cream/70 text-xs font-medium text-charcoal',
+                        group.tagClassName,
+                      )}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <div className="flex flex-wrap gap-2 border-t border-taupe/15 pt-6">
-                {group.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className={cn(
-                      'rounded-lg border border-taupe/25 bg-cream/70 text-xs font-medium text-charcoal',
-                      group.tagClassName,
-                    )}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         <div className="mb-12 flex items-center justify-center gap-2">
-          <span className="h-2.5 w-2.5 rounded-full bg-navy" />
-          <span className="h-2 w-2 rounded-full bg-taupe/50" />
-          <span className="h-2 w-2 rounded-full bg-taupe/50" />
+          {Array.from({ length: maxIndex + 1 }, (_, dot) => {
+            const active = dot === slide;
+            return (
+              <button
+                key={dot}
+                type="button"
+                aria-label={`Show capability ${dot + 1}`}
+                aria-current={active ? 'true' : undefined}
+                onClick={() => goTo(dot)}
+                className={cn(
+                  'rounded-full transition-all duration-300',
+                  active
+                    ? 'h-2.5 w-2.5 bg-navy'
+                    : 'h-2 w-2 bg-taupe/50 hover:bg-taupe',
+                )}
+              />
+            );
+          })}
         </div>
 
         <div className="flex flex-col justify-between gap-8 rounded-2xl border border-white/10 bg-charcoal p-7 text-cream shadow-editorial sm:p-9 lg:flex-row lg:items-center">
