@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { projects, projectsSection } from '@/data';
+import { Carousel } from '@/components/carousel';
 import { SymbolIcon } from '@/components/icons';
 import { SectionHeading } from '@/components/section-heading';
 
@@ -18,7 +19,7 @@ export function Projects() {
           {projectsSection.inquireLabel}
         </Link>
       </div>
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <Carousel label={projectsSection.title}>
         {projects.map((project) => (
           <article
             key={project.caseNumber}
@@ -78,7 +79,7 @@ export function Projects() {
             </div>
           </article>
         ))}
-      </div>
+      </Carousel>
     </section>
   );
 }

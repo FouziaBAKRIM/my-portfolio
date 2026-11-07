@@ -64,6 +64,12 @@ export const cv = {
   pageLabel: 'CV page',
 };
 
+export const carouselLabels = {
+  previous: 'Previous',
+  next: 'Next',
+  goTo: 'Go to slide',
+};
+
 export const about = {
   eyebrow: 'About Me',
   title: 'Bridging Business Context & Data Engineering',

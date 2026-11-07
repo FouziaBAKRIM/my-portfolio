@@ -1,4 +1,5 @@
 import { skills } from '@/data';
+import { Marquee } from '@/components/marquee';
 import { SymbolIcon } from '@/components/icons';
 import { SectionHeading } from '@/components/section-heading';
 
@@ -12,31 +13,37 @@ export function Skills() {
           intro={skills.intro}
         />
 
-        <div className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-3">
-          {skills.groups.map((group) => (
-            <div
-              key={group.title}
-              data-reveal
-              className="flex card flex-col p-6 sm:p-7"
-            >
-              <span className="mb-6 flex h-11 w-11 items-center justify-center rounded-2xl bg-navy text-cream">
-                <SymbolIcon name={group.icon} className="text-[22px]" />
-              </span>
-              <h3 className="font-serif text-xl leading-snug font-medium text-navy sm:text-2xl">
-                {group.title}
-              </h3>
-              <p className="mt-3 mb-6 text-sm leading-relaxed text-charcoal/75">
-                {group.description}
-              </p>
-              <div className="mt-auto flex flex-wrap gap-1.5">
-                {group.tags.map((tag) => (
-                  <span key={tag} className="chip">
-                    {tag}
-                  </span>
-                ))}
+        <div className="mt-10">
+          <Marquee
+            seconds={60}
+            className="-my-8 py-8"
+            itemClassName="w-[19rem] pr-5 motion-reduce:pb-5 sm:w-[22rem]"
+          >
+            {skills.groups.map((group) => (
+              <div
+                key={group.title}
+                data-reveal
+                className="flex w-full card flex-col p-6 sm:p-7"
+              >
+                <span className="mb-6 flex h-11 w-11 items-center justify-center rounded-2xl bg-navy text-cream">
+                  <SymbolIcon name={group.icon} className="text-[22px]" />
+                </span>
+                <h3 className="font-serif text-xl leading-snug font-medium text-navy sm:text-2xl">
+                  {group.title}
+                </h3>
+                <p className="mt-3 mb-6 text-sm leading-relaxed text-charcoal/75">
+                  {group.description}
+                </p>
+                <div className="mt-auto flex flex-wrap gap-1.5">
+                  {group.tags.map((tag) => (
+                    <span key={tag} className="chip">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </Marquee>
         </div>
 
         <div
@@ -54,19 +61,23 @@ export function Skills() {
               {skills.toolbox.intro}
             </p>
           </div>
-          <div className="flex flex-wrap gap-2 lg:justify-end">
+          <Marquee
+            seconds={35}
+            className="min-w-0 flex-1"
+            itemClassName="pr-2 motion-reduce:pb-2"
+          >
             {skills.toolbox.tools.map((tool) => (
-              <div
+              <span
                 key={tool.label}
-                className="inline-flex items-center gap-2 rounded-full border border-white/15 px-3.5 py-1.5 text-xs font-medium transition-colors hover:border-sage"
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 px-3.5 py-1.5 text-xs font-medium whitespace-nowrap transition-colors hover:border-sage"
               >
                 <span className="font-mono text-[10px] font-bold text-sage">
                   {tool.mark}
                 </span>
                 <span>{tool.label}</span>
-              </div>
+              </span>
             ))}
-          </div>
+          </Marquee>
         </div>
       </div>
     </section>

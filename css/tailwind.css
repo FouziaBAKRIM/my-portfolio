@@ -22,6 +22,14 @@
   --shadow-editorial-hover:
     0 24px 44px -8px rgba(38, 49, 61, 0.14),
     0 8px 20px -3px rgba(38, 49, 61, 0.06);
+
+  --animate-marquee: marquee 35s linear infinite;
+
+  @keyframes marquee {
+    to {
+      translate: -50%;
+    }
+  }
 }
 
 @utility container-page {
@@ -81,6 +89,32 @@ a:focus-visible,
 button:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 3px;
+}
+
+/* Slides fade and shrink at the carousel edges. Browsers without scroll-driven animations just show them. */
+@keyframes carousel-focus {
+  entry 0% {
+    opacity: 0.4;
+    scale: 0.92;
+  }
+  entry 100%,
+  exit 0% {
+    opacity: 1;
+    scale: 1;
+  }
+  exit 100% {
+    opacity: 0.4;
+    scale: 0.92;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .carousel-slide {
+      animation: carousel-focus linear both;
+      animation-timeline: view(inline);
+    }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
