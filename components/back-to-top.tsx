@@ -15,7 +15,7 @@ export function ScrollToTopButton({
     <button
       type="button"
       className={className}
-      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      onClick={() => window.scrollTo({ top: 0 })}
     >
       {children}
     </button>
@@ -37,7 +37,7 @@ export function BackToTop() {
     <button
       type="button"
       aria-label="Scroll back to top"
-      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      onClick={() => window.scrollTo({ top: 0 })}
       className={cn(
         'fixed right-6 bottom-6 z-40 cursor-pointer rounded-full border border-cream/20 bg-navy p-3 text-cream shadow-lg outline-hidden transition-all duration-300 hover:bg-navy-light hover:text-sage',
         visible

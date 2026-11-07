@@ -1,28 +1,22 @@
 import { experience, experienceSection } from '@/data';
+import { SectionHeading } from '@/components/section-heading';
 import { Timeline } from '@/components/timeline';
 
 export function Experience() {
   return (
     <section
       id="experience"
-      className="w-full border-b border-border-soft bg-cream px-6 py-28 text-charcoal lg:px-12"
+      className="container-page grid grid-cols-1 gap-10 py-12 lg:grid-cols-12 lg:gap-12 lg:py-20"
     >
-      <div className="mx-auto flex max-w-5xl flex-col">
-        <div className="reveal-on-scroll is-visible mx-auto mb-16 max-w-2xl text-center">
-          <span className="mb-2 block font-mono text-[11px] font-semibold tracking-[0.25em] text-taupe uppercase">
-            {experienceSection.eyebrow}
-          </span>
-          <h2 className="mb-3 font-serif text-3xl font-bold tracking-tight text-navy sm:text-4xl lg:text-5xl">
-            {experienceSection.title}
-          </h2>
-          <p className="text-xs leading-relaxed font-normal text-charcoal/70 sm:text-sm">
-            {experienceSection.intro}
-          </p>
-        </div>
-        <Timeline
-          items={experience}
-          spacingClassName="space-y-12 sm:space-y-14"
+      <div className="lg:sticky lg:top-28 lg:col-span-4 lg:self-start">
+        <SectionHeading
+          eyebrow={experienceSection.eyebrow}
+          title={experienceSection.title}
+          intro={experienceSection.intro}
         />
+      </div>
+      <div className="lg:col-span-8">
+        <Timeline items={experience} />
       </div>
     </section>
   );

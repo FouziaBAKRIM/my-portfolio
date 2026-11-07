@@ -6,6 +6,7 @@ import { Education } from '@/components/education';
 import { Experience } from '@/components/experience';
 import { Header } from '@/components/header';
 import { Hero } from '@/components/hero';
+import { Motion } from '@/components/motion';
 import { Projects } from '@/components/projects';
 import { Skills } from '@/components/skills';
 import { profile, siteConfig } from '@/data';
@@ -39,9 +40,10 @@ export default function Page() {
         <Projects />
         <Experience />
         <Education />
-        <Contact />
       </main>
+      <Contact />
       <BackToTop />
+      <Motion />
     </>
   );
 }

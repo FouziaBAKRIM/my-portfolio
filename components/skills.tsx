@@ -2,9 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import { skills } from '@/data';
+<<<<<<< HEAD
 import type { SkillGroup } from '@/types';
 import { cn } from '@/lib/utils';
+=======
+>>>>>>> b3bff4a066ef6a47c15a1c8ccbb93e1dfbb80686
 import { SymbolIcon } from '@/components/icons';
+import { SectionHeading } from '@/components/section-heading';
 
 const cardGap = '1.5rem';
 
@@ -81,6 +85,7 @@ export function Skills() {
   };
 
   return (
+<<<<<<< HEAD
     <section
       id="skills"
       className="w-full border-t border-b border-border-soft bg-sage-pale px-6 py-28 lg:px-12"
@@ -187,30 +192,68 @@ export function Skills() {
         <div className="flex flex-col justify-between gap-8 rounded-2xl border border-white/10 bg-charcoal p-7 text-cream shadow-editorial sm:p-9 lg:flex-row lg:items-center">
           <div className="max-w-md">
             <span className="mb-2 block font-mono text-[11px] font-semibold tracking-[0.25em] text-taupe uppercase">
+=======
+    <section id="skills" className="container-page py-8 lg:py-12">
+      <div className="rounded-[2rem] bg-sage-pale p-6 sm:p-10 lg:p-14">
+        <SectionHeading
+          eyebrow={skills.eyebrow}
+          title={skills.title}
+          intro={skills.intro}
+        />
+
+        <div className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-3">
+          {skills.groups.map((group) => (
+            <div
+              key={group.title}
+              data-reveal
+              className="flex card flex-col p-6 sm:p-7"
+            >
+              <span className="mb-6 flex h-11 w-11 items-center justify-center rounded-2xl bg-navy text-cream">
+                <SymbolIcon name={group.icon} className="text-[22px]" />
+              </span>
+              <h3 className="font-serif text-xl leading-snug font-medium text-navy sm:text-2xl">
+                {group.title}
+              </h3>
+              <p className="mt-3 mb-6 text-sm leading-relaxed text-charcoal/75">
+                {group.description}
+              </p>
+              <div className="mt-auto flex flex-wrap gap-1.5">
+                {group.tags.map((tag) => (
+                  <span key={tag} className="chip">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div
+          data-reveal
+          className="mt-5 flex flex-col justify-between gap-6 rounded-3xl bg-navy p-6 text-cream sm:p-8 lg:flex-row lg:items-center lg:gap-12"
+        >
+          <div className="shrink-0 lg:max-w-xs">
+            <span className="mb-2 block font-mono text-[11px] font-semibold tracking-[0.25em] text-sage uppercase">
+>>>>>>> b3bff4a066ef6a47c15a1c8ccbb93e1dfbb80686
               {skills.toolbox.eyebrow}
             </span>
-            <h3 className="mb-2 font-serif text-2xl font-bold tracking-tight text-cream sm:text-3xl">
+            <h3 className="font-serif text-2xl font-medium tracking-tight">
               {skills.toolbox.title}
             </h3>
-            <p className="text-xs leading-relaxed font-normal text-cream/70 sm:text-sm">
+            <p className="mt-2 text-sm leading-relaxed text-cream/70">
               {skills.toolbox.intro}
             </p>
           </div>
-          <div className="flex flex-col gap-3 lg:items-end">
-            {skills.toolbox.rows.map((row) => (
+          <div className="flex flex-wrap gap-2 lg:justify-end">
+            {skills.toolbox.tools.map((tool) => (
               <div
-                key={row.map((tool) => tool.label).join('-')}
-                className="flex flex-wrap items-center gap-2 sm:gap-2.5"
+                key={tool.label}
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 px-3.5 py-1.5 text-xs font-medium transition-colors hover:border-sage"
               >
-                {row.map((tool) => (
-                  <div
-                    key={tool.label}
-                    className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-navy px-3.5 py-1.5 text-xs font-medium text-cream transition-colors hover:border-sage"
-                  >
-                    <span className={tool.markClassName}>{tool.mark}</span>
-                    <span>{tool.label}</span>
-                  </div>
-                ))}
+                <span className="font-mono text-[10px] font-bold text-sage">
+                  {tool.mark}
+                </span>
+                <span>{tool.label}</span>
               </div>
             ))}
           </div>

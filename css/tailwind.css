@@ -1,64 +1,40 @@
 @import 'tailwindcss';
 
-/* Tailwind 4 limits hover to devices that support it. This restores the CDN behavior. */
-@custom-variant hover (&:hover);
-
 @theme {
   --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-playfair), ui-serif, Georgia, serif;
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 
   --color-navy: #192a40;
-  --color-navy-dark: #111d2d;
   --color-navy-light: #233955;
   --color-cream: #f5f0e6;
   --color-cream-light: #faf7f2;
-  --color-cream-card: #ffffff;
   --color-sage: #b7c9b5;
   --color-sage-pale: #dce6d9;
-  --color-sage-muted: #899f88;
   --color-sage-dark: #4f644f;
   --color-charcoal: #26313d;
   --color-taupe: #b9a995;
   --color-border-soft: rgba(25, 42, 64, 0.12);
-  --color-border-sage: rgba(183, 201, 181, 0.35);
-  --color-border-navy-soft: rgba(245, 240, 230, 0.15);
 
-  --shadow-executive:
-    0 10px 30px -5px rgba(25, 42, 64, 0.06),
-    0 4px 12px -2px rgba(25, 42, 64, 0.03);
-  --shadow-executive-hover:
-    0 20px 35px -8px rgba(25, 42, 64, 0.12),
-    0 8px 16px -4px rgba(25, 42, 64, 0.06);
   --shadow-editorial:
     0 12px 36px -4px rgba(38, 49, 61, 0.07),
     0 4px 16px -2px rgba(38, 49, 61, 0.04);
   --shadow-editorial-hover:
     0 24px 44px -8px rgba(38, 49, 61, 0.14),
     0 8px 20px -3px rgba(38, 49, 61, 0.06);
+}
 
-  --animate-float: subtleFloat 7s ease-in-out infinite;
-  --animate-botanical: botanicalSway 8s ease-in-out infinite;
+@utility container-page {
+  @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+}
 
-  @keyframes subtleFloat {
-    0%,
-    100% {
-      transform: translateY(0px) rotate(0deg);
-    }
-    50% {
-      transform: translateY(-8px) rotate(1.5deg);
-    }
-  }
+/* Lists exact properties: a transition on transform or opacity would fight GSAP. */
+@utility card {
+  @apply rounded-3xl border border-navy/10 bg-white shadow-editorial transition-[translate,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-navy/25 hover:shadow-editorial-hover;
+}
 
-  @keyframes botanicalSway {
-    0%,
-    100% {
-      transform: rotate(0deg) scale(1);
-    }
-    50% {
-      transform: rotate(2deg) scale(1.02);
-    }
-  }
+@utility chip {
+  @apply rounded-full bg-cream px-3 py-1 text-xs font-medium text-charcoal;
 }
 
 @layer base {
@@ -66,7 +42,12 @@
     background-color: #f5f0e6;
   }
 
-  section[id] {
+  html:has(dialog[open]) {
+    overflow: hidden;
+  }
+
+  section[id],
+  footer[id] {
     scroll-margin-top: 6rem;
   }
 }
@@ -96,27 +77,6 @@
 .delay-400 {
   animation-delay: 400ms;
 }
-.delay-500 {
-  animation-delay: 500ms;
-}
-.delay-600 {
-  animation-delay: 600ms;
-}
-
-.reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(28px);
-  transition:
-    opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-}
-
-.reveal-on-scroll.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 a:focus-visible,
 button:focus-visible {
   outline: 2px solid currentColor;
@@ -124,12 +84,8 @@ button:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-float,
-  .animate-botanical,
-  .fade-slide-up,
-  .reveal-on-scroll {
+  .fade-slide-up {
     animation: none !important;
-    transition: none !important;
     opacity: 1 !important;
     transform: none !important;
   }
