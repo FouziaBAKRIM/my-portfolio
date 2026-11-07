@@ -107,27 +107,15 @@ export const skills = {
     {
       title: 'Programming & Data Analysis',
       description:
-<<<<<<< HEAD
         'Writing clean, performant code to clean datasets, automate recurring routines, build schema validation pipelines, and perform machine learning segmentation.',
-      icon: 'brackets',
-      tags: ['Python', 'Pandas', 'NumPy', 'Scikit-Learn', 'Pandera', 'SQL'],
-      tagClassName: 'px-3 py-1.5',
-=======
-        'Writing clean, performant code to clean datasets, automate recurring routines, and detect operational anomalies.',
       icon: 'code',
-      tags: ['Python', 'Pandas', 'NumPy', 'SQL'],
->>>>>>> b3bff4a066ef6a47c15a1c8ccbb93e1dfbb80686
+      tags: ['Python', 'Pandas', 'NumPy', 'Scikit-Learn', 'Pandera', 'SQL'],
     },
     {
       title: 'Data Visualization & BI',
       description:
-<<<<<<< HEAD
         'Transforming raw tables into multi-block, interactive Power BI dashboards built to contrast deterministic business logic against algorithmic machine learning clusters.',
-      icon: 'chart',
-=======
-        'Transforming raw tables into interactive, responsive dashboards built for executive and operational decision-making.',
       icon: 'bar_chart',
->>>>>>> b3bff4a066ef6a47c15a1c8ccbb93e1dfbb80686
       tags: [
         'Power BI',
         'DAX',
@@ -143,13 +131,12 @@ export const skills = {
         'Relational schema design, dimensional modeling, automated ETL workflows, and continuous data pipeline management across production database environments.',
       icon: 'database',
       tags: ['SQL', 'SQL Server', 'PostgreSQL', 'ETL Pipelines', 'Data Hub'],
-      tagClassName: 'px-3.5 py-1.5',
     },
     {
       title: 'Machine Learning & Predictive Analytics',
       description:
         'Developing unsupervised clustering models, RFM customer segmentation pipelines, and predictive algorithms to unearth hidden operational patterns in enterprise data.',
-      icon: 'model',
+      icon: 'bar_chart',
       tags: [
         'Scikit-Learn',
         'RFM Analysis',
@@ -162,7 +149,7 @@ export const skills = {
       title: 'Data Governance & Quality Control',
       description:
         'Establishing enterprise metric standards, implementing schema validation rules, writing functional specifications, and conducting system reliability testing.',
-      icon: 'shield',
+      icon: 'database',
       tags: [
         'Data Quality Assurance',
         'DataHub',
@@ -170,7 +157,6 @@ export const skills = {
         'Functional Specifications',
         'System Testing',
       ],
-      tagClassName: 'px-3 py-1.5',
     },
     {
       title: 'Analytics Engineering & Developer Tools',
@@ -178,7 +164,6 @@ export const skills = {
         'Managing collaborative codebase repositories, configuring deployment environments, and maintaining clean, version-controlled developer workflows.',
       icon: 'code',
       tags: ['Git', 'GitHub', 'Cursor', 'VS Code', 'Vercel', 'Linux/Bash'],
-      tagClassName: 'px-3.5 py-1.5',
     },
   ] satisfies SkillGroup[],
   toolbox: {
