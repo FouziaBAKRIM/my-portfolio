@@ -39,7 +39,29 @@ export function Contact() {
           </div>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <div className="mt-8 flex flex-col gap-5 rounded-2xl border border-white/10 bg-white/[0.04] p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+          <div>
+            <span className="font-mono text-[11px] font-semibold tracking-[0.16em] text-sage uppercase">
+              {contact.targetRolesLabel}
+            </span>
+            <p className="mt-1.5 text-sm font-medium text-cream sm:text-base">
+              {contact.targetRoles}
+            </p>
+          </div>
+          <a
+            href={contact.primaryCta.href}
+            className="group inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-sage px-5 py-3 text-sm font-semibold text-navy transition-colors hover:bg-sage-pale"
+          >
+            <MailIcon className="h-4 w-4" />
+            <span>{contact.primaryCta.label}</span>
+            <SymbolIcon
+              name="arrow_forward"
+              className="text-[16px] transition-transform duration-200 group-hover:translate-x-0.5"
+            />
+          </a>
+        </div>
+
+        <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
           {contactChannels.map((channel) => {
             const className =
               'group flex items-center gap-4 rounded-2xl border border-white/10 p-4 transition-colors duration-300 hover:border-sage hover:bg-white/5 sm:p-5';
@@ -49,7 +71,7 @@ export function Contact() {
                   <ChannelIcon icon={channel.icon} />
                 </span>
                 <span className="flex min-w-0 flex-col">
-                  <span className="font-mono text-xs font-semibold tracking-wider text-cream/60 uppercase">
+                  <span className="font-mono text-xs font-semibold tracking-wider text-cream/75 uppercase">
                     {channel.label}
                   </span>
                   <span className="text-sm font-medium wrap-anywhere">
@@ -83,12 +105,12 @@ export function Contact() {
           })}
         </div>
 
-        <p className="mt-10 text-center font-serif text-base text-cream/70 italic sm:text-lg">
+        <p className="mt-8 text-center font-serif text-base text-cream/75 italic sm:text-lg">
           {contact.closing}
         </p>
       </div>
 
-      <div className="flex flex-col items-center justify-between gap-3 px-2 pt-6 text-xs text-charcoal/70 sm:flex-row">
+      <div className="flex flex-col items-center justify-between gap-3 px-2 pt-6 text-xs text-charcoal/80 sm:flex-row">
         <span>
           © <CurrentYear buildYear={new Date().getFullYear()} />{' '}
           {contact.copyright}

@@ -106,83 +106,80 @@ export const about = {
 
 export const skills = {
   eyebrow: 'MY EXPERTISE',
-  title: 'Core Capabilities & Toolkit',
+  title: 'Skills',
   intro:
-    'End-to-end capabilities spanning data modeling, analytical engineering, and visual intelligence.',
+    'Core capabilities for turning business questions into reliable analysis and clear reporting.',
   groups: [
     {
-      title: 'Programming & Data Analysis',
+      title: 'Business Analysis & Data Governance',
       description:
-        'Writing clean, performant code to clean datasets, automate recurring routines, build schema validation pipelines, and perform machine learning segmentation.',
-      icon: 'code',
-      tags: ['Python', 'Pandas', 'NumPy', 'Scikit-Learn', 'Pandera', 'SQL'],
+        'Turning business needs into clear KPIs, documented rules, and trustworthy data.',
+      icon: 'database',
+      tags: [
+        'Requirements Gathering',
+        'KPI Definition',
+        'Data Governance',
+        'Data Quality',
+        'Functional Specifications',
+      ],
     },
     {
-      title: 'Data Visualization & BI',
+      title: 'SQL & Python',
       description:
-        'Transforming raw tables into multi-block, interactive Power BI dashboards built to contrast deterministic business logic against algorithmic machine learning clusters.',
+        'Cleaning, querying, and automating data workflows with SQL and Python.',
+      icon: 'code',
+      tags: ['SQL', 'SQL Server', 'PostgreSQL', 'Python', 'Pandas', 'NumPy'],
+    },
+    {
+      title: 'Power BI & Reporting',
+      description:
+        'Building clear Power BI dashboards that help teams monitor performance.',
       icon: 'bar_chart',
       tags: [
         'Power BI',
         'DAX',
-        'Interactive Dashboards',
-        'KPI Modeling',
+        'Data Modeling',
+        'KPI Dashboards',
         'Data Storytelling',
-        'Excel',
       ],
     },
     {
-      title: 'Databases & Data Engineering',
+      title: 'Data Engineering & Quality',
       description:
-        'Relational schema design, dimensional modeling, automated ETL workflows, and continuous data pipeline management across production database environments.',
-      icon: 'database',
-      tags: ['SQL', 'SQL Server', 'PostgreSQL', 'ETL Pipelines', 'DataHub'],
-    },
-    {
-      title: 'Machine Learning & Predictive Analytics',
-      description:
-        'Developing unsupervised clustering models, RFM customer segmentation pipelines, and predictive algorithms to unearth hidden operational patterns in enterprise data.',
-      icon: 'bar_chart',
-      tags: [
-        'Scikit-Learn',
-        'RFM Analysis',
-        'K-Means Clustering',
-        'Customer Segmentation',
-        'Python',
-      ],
-    },
-    {
-      title: 'Data Governance & Quality Control',
-      description:
-        'Establishing enterprise metric standards, implementing schema validation rules, writing functional specifications, and conducting system reliability testing.',
+        'Designing dependable pipelines that validate data before it reaches reporting.',
       icon: 'database',
       tags: [
+        'ETL Pipelines',
+        'Schema Validation',
         'Data Quality Assurance',
         'DataHub',
-        'Schema Validation',
-        'Functional Specifications',
         'System Testing',
       ],
     },
     {
-      title: 'Analytics Engineering & Developer Tools',
+      title: 'Machine Learning',
       description:
-        'Managing collaborative codebase repositories, configuring deployment environments, and maintaining clean, version-controlled developer workflows.',
-      icon: 'code',
-      tags: ['Git', 'GitHub', 'Cursor', 'VS Code', 'Vercel', 'Linux/Bash'],
+        'Applying clustering and segmentation to uncover customer and operational patterns.',
+      icon: 'bar_chart',
+      tags: [
+        'Scikit-Learn',
+        'K-Means',
+        'RFM Analysis',
+        'Customer Segmentation',
+      ],
     },
   ] satisfies SkillGroup[],
   toolbox: {
     eyebrow: 'MY TOOLBOX',
     title: 'Technologies & Tools',
-    intro: 'Industry-standard technologies applied in production environments.',
+    intro:
+      'Industry-standard tools I use for analysis, reporting, and delivery.',
     tools: [
       { mark: 'Py', label: 'Python' },
       { mark: 'SQL', label: 'SQL Server' },
       { mark: 'BI', label: 'Power BI' },
       { mark: 'DAX', label: 'DAX Modeling' },
       { mark: 'Pg', label: 'PostgreSQL' },
-      { mark: 'Tab', label: 'Tableau' },
       { mark: 'Git', label: 'Git & GitHub' },
     ] satisfies Tool[],
   },
@@ -190,9 +187,15 @@ export const skills = {
 
 export const projectsSection = {
   eyebrow: 'SELECTED WORK',
-  title: 'Featured Projects',
+  title: 'Projects',
   intro:
-    'Three case studies that mirror the work on my CV — from controlled ingestion to decision-ready dashboards.',
+    'Selected projects across customer analytics, data quality, and BI reporting.',
+  featuredLabel: 'Featured case study',
+  featuredBadge: 'Featured',
+  viewCaseStudy: 'View case study',
+  closeLabel: 'Close case study',
+  overviewLabel: 'Overview',
+  detailsLabel: 'Case study details',
   fieldLabels: {
     context: 'Context',
     role: 'Role',
@@ -208,6 +211,8 @@ export const projects: Project[] = [
     category: 'CUSTOMER ANALYTICS',
     caseNumber: 'Case Study 01',
     title: 'RFM Customer Segmentation',
+    summary:
+      'RFM scoring and K-Means clustering turned e-commerce transaction history into a Power BI dashboard of high-value and at-risk customer segments.',
     context:
       'Commercial teams needed a shared view of which customers drive revenue and which are drifting away.',
     role: 'Defined the RFM scoring rules with business stakeholders, prepared the transaction data, and built the reporting layer.',
@@ -217,14 +222,20 @@ export const projects: Project[] = [
       'Scored every customer on recency, frequency, and monetary value, grouped them into actionable segments, and delivered the results in a Power BI dashboard.',
     result:
       'Gave stakeholders a repeatable way to target high-value segments and run churn-reduction campaigns instead of one-off list pulls.',
-    tags: [
-      'Python',
-      'Pandas',
-      'NumPy',
-      'RFM Analysis',
-      'Power BI',
-      'Customer Segmentation',
+    icon: 'bar_chart',
+    tagGroups: [
+      { label: 'Stack', tags: ['Python', 'Pandas', 'NumPy', 'Power BI'] },
+      {
+        label: 'Methods',
+        tags: ['RFM Analysis', 'K-Means', 'Customer Segmentation'],
+      },
     ],
+    image: {
+      src: '/images/rfm-dashboard.png',
+      alt: 'Power BI dashboard overview of RFM customer segmentation, showing customer segments, revenue contribution, and recency, frequency, and monetary metrics.',
+      width: 885,
+      height: 498,
+    },
     links: [
       {
         label: 'View repository',
@@ -236,6 +247,8 @@ export const projects: Project[] = [
     category: 'DATA ENGINEERING & QUALITY',
     caseNumber: 'Case Study 02',
     title: 'Automated Ingestion & Quality Control',
+    summary:
+      'A Python and SQL pipeline that standardizes files from different sources and stops bad records before they reach reporting.',
     context:
       'Multiple source systems delivered heterogeneous files whose formats, data types, and values drifted between runs.',
     role: 'Owned the pipeline design, the validation rules, and the handover documentation for the data team.',
@@ -245,13 +258,13 @@ export const projects: Project[] = [
       'Built a Python and SQL pipeline that standardized incoming files and applied automated controls for anomalies, data types, outliers, and duplicates.',
     result:
       'Each load now fails fast on bad records and surfaces quality issues before they reach reporting, replacing manual spot checks.',
-    tags: [
-      'Python',
-      'SQL',
-      'ETL',
-      'Data Quality',
-      'Data Validation',
-      'DataHub',
+    icon: 'database',
+    tagGroups: [
+      { label: 'Stack', tags: ['Python', 'SQL', 'DataHub'] },
+      {
+        label: 'Methods',
+        tags: ['ETL Pipeline', 'Data Quality', 'Schema Validation'],
+      },
     ],
     links: [{ label: 'Request walkthrough', href: '#contact' }],
   },
@@ -259,6 +272,8 @@ export const projects: Project[] = [
     category: 'BI & REPORTING',
     caseNumber: 'Case Study 03',
     title: 'Retail Sales & Profitability Analysis',
+    summary:
+      'A SQL data model and Power BI report that replaced scattered spreadsheets with clear store-level margin and profitability views.',
     context:
       'Store performance was reported in scattered spreadsheets, making margin trends hard to compare across locations.',
     role: 'Cleaned and modeled the sales data, then designed and published the Power BI report for business users.',
@@ -268,14 +283,21 @@ export const projects: Project[] = [
       'Built a star-schema model in SQL, automated the cleaning steps in Python, and created drill-down dashboard views for margin and customer segments.',
     result:
       'Replaced static monthly extracts with a single report that lets managers compare store profitability and spot margin leaks by product and period.',
-    tags: ['Python', 'Pandas', 'SQL', 'Power BI', 'Data Modeling', 'DAX'],
+    icon: 'bar_chart',
+    tagGroups: [
+      { label: 'Stack', tags: ['Python', 'Pandas', 'SQL', 'Power BI'] },
+      {
+        label: 'Methods',
+        tags: ['Star Schema', 'Data Modeling', 'DAX'],
+      },
+    ],
     links: [{ label: 'Request walkthrough', href: '#contact' }],
   },
 ];
 
 export const experienceSection = {
   eyebrow: 'CAREER MILESTONES',
-  title: 'Professional Journey',
+  title: 'Experience',
   intro:
     'Proven track record across data analysis, business analysis, data governance, and machine learning.',
 };
@@ -327,7 +349,7 @@ export const experience: TimelineItem[] = [
 
 export const educationSection = {
   eyebrow: 'ACADEMICS',
-  title: 'Education & Credentials',
+  title: 'Education',
   intro:
     'Strong foundational training in Big Data, IoT architecture, and enterprise intelligence.',
 };
@@ -338,7 +360,7 @@ export const education: TimelineItem[] = [
     title: "Master's in Big Data and Internet of Things",
     organization:
       'ENSAM — École Nationale Supérieure d’Arts et Métiers • Casablanca, Morocco',
-    badge: 'Research Master',
+    badge: "Master's Degree",
     summary:
       'Relevant coursework: distributed computing, data pipeline orchestration, cloud architectures, and machine learning models.',
   },
@@ -364,8 +386,15 @@ export const contact = {
   eyebrow: 'GET IN TOUCH',
   title: "Let's Connect",
   status: 'Open to Work • Data Analyst',
+  targetRolesLabel: 'Target roles',
+  targetRoles:
+    'Data Analyst · Business Intelligence Analyst · Analytics Engineer',
+  primaryCta: {
+    label: 'Email me about a role',
+    href: `mailto:${profile.email}?subject=Data%20analyst%20opportunity`,
+  },
   closing:
-    'Open to data analyst and business intelligence roles in Morocco or remote. Email is the best way to reach me.',
+    'Open to Data Analyst and Business Intelligence roles in Morocco or remote. Email is the best way to start a conversation.',
   copyright: 'Fouzia Bakrim. All rights reserved.',
   backToTop: 'Back to Top',
 };

@@ -50,7 +50,7 @@ export function Hero() {
             </Link>
           </div>
           <div className="fade-slide-up flex flex-wrap items-center gap-x-6 gap-y-2 delay-400">
-            <span className="text-xs font-medium tracking-widest text-navy/60 uppercase">
+            <span className="text-xs font-medium tracking-widest text-navy/70 uppercase">
               {hero.followLabel}
             </span>
             <a

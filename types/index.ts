@@ -25,16 +25,31 @@ export type ProjectLink = {
   href: string;
 };
 
+export type ProjectImage = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+};
+
+export type ProjectTagGroup = {
+  label: string;
+  tags: string[];
+};
+
 export type Project = {
   category: string;
   caseNumber: string;
   title: string;
+  summary: string;
   context: string;
   role: string;
   dataset: string;
   approach: string;
   result: string;
-  tags: string[];
+  icon: 'code' | 'bar_chart' | 'database';
+  tagGroups: ProjectTagGroup[];
+  image?: ProjectImage;
   links: ProjectLink[];
 };
 

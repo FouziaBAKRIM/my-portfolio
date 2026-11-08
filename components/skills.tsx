@@ -31,7 +31,7 @@ export function Skills() {
                 <h3 className="font-serif text-xl leading-snug font-medium text-navy sm:text-2xl">
                   {group.title}
                 </h3>
-                <p className="mt-3 mb-6 text-sm leading-relaxed text-charcoal/75">
+                <p className="mt-3 mb-6 text-sm leading-relaxed text-charcoal/80">
                   {group.description}
                 </p>
                 <div className="mt-auto flex flex-wrap gap-1.5">
@@ -57,7 +57,7 @@ export function Skills() {
             <h3 className="font-serif text-2xl font-medium tracking-tight">
               {skills.toolbox.title}
             </h3>
-            <p className="mt-2 text-sm leading-relaxed text-cream/70">
+            <p className="mt-2 text-sm leading-relaxed text-cream/75">
               {skills.toolbox.intro}
             </p>
           </div>

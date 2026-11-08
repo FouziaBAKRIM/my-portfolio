@@ -86,7 +86,7 @@ export function Header() {
                     'rounded-full px-3 py-1.5 text-[13px] tracking-tight transition-all duration-200',
                     active
                       ? 'bg-cream-light font-semibold text-navy shadow-xs'
-                      : 'font-medium text-navy/65 hover:text-navy',
+                      : 'font-medium text-navy/75 hover:text-navy',
                   )}
                 >
                   {link.label}
