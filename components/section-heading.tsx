@@ -15,7 +15,7 @@ export function SectionHeading({
     <div data-reveal>
       <span
         className={cn(
-          'mb-3 block font-mono text-[11px] font-semibold tracking-[0.25em] uppercase',
+          'mb-3 block font-mono text-xs font-semibold tracking-[0.25em] uppercase',
           dark ? 'text-sage' : 'text-sage-dark',
         )}
       >

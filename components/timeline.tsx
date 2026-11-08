@@ -17,7 +17,7 @@ export function Timeline({ items }: { items: TimelineItem[] }) {
             <span className="absolute top-8 -left-7 h-[11px] w-[11px] rounded-full bg-navy ring-4 ring-sage-pale sm:-left-9" />
             <div className="card p-6 sm:p-7">
               <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
-                <span className="font-mono text-[11px] font-semibold tracking-wider text-sage-dark uppercase">
+                <span className="font-mono text-xs font-semibold tracking-wider text-sage-dark uppercase">
                   {item.date}
                 </span>
                 <span className="chip">{item.badge}</span>

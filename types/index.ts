@@ -20,19 +20,22 @@ export type Tool = {
   label: string;
 };
 
+export type ProjectLink = {
+  label: string;
+  href: string;
+};
+
 export type Project = {
   category: string;
   caseNumber: string;
-  metricEyebrow: string;
-  metricTitle: string;
-  metricNote: string;
-  metricStatus: string;
   title: string;
-  description: string;
+  context: string;
+  role: string;
+  dataset: string;
+  approach: string;
+  result: string;
   tags: string[];
-  footnote: string;
-  href: string;
-  linkLabel: string;
+  links: ProjectLink[];
 };
 
 export type TimelineItem = {

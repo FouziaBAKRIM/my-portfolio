@@ -36,9 +36,9 @@ export default function Page() {
       <main className="w-full">
         <Hero />
         <About />
-        <Skills />
-        <Projects />
         <Experience />
+        <Projects />
+        <Skills />
         <Education />
       </main>
       <Contact />

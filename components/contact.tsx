@@ -49,7 +49,7 @@ export function Contact() {
                   <ChannelIcon icon={channel.icon} />
                 </span>
                 <span className="flex min-w-0 flex-col">
-                  <span className="font-mono text-[10px] font-semibold tracking-wider text-cream/60 uppercase">
+                  <span className="font-mono text-xs font-semibold tracking-wider text-cream/60 uppercase">
                     {channel.label}
                   </span>
                   <span className="text-sm font-medium wrap-anywhere">

@@ -1,6 +1,14 @@
 'use client';
 
-import { Children, useEffect, useRef, useState, type ReactNode } from 'react';
+import {
+  Children,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type KeyboardEvent,
+  type ReactNode,
+} from 'react';
 import { carouselLabels } from '@/data';
 import { cn } from '@/lib/utils';
 import { SymbolIcon } from '@/components/icons';
@@ -33,16 +41,21 @@ export function Carousel({
   const slides = Children.toArray(children);
   const trackRef = useRef<HTMLUListElement>(null);
   const [position, setPosition] = useState({ index: 0, last: 0 });
+  const hintId = useId();
+  const liveId = useId();
+
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
     const update = () => {
       const step = stepOf(track);
-      const index = Math.round(track.scrollLeft / step);
-      const last = Math.max(
-        0,
-        Math.round((track.scrollWidth - track.clientWidth) / step),
-      );
+      const index = step ? Math.round(track.scrollLeft / step) : 0;
+      const last = step
+        ? Math.max(
+            0,
+            Math.round((track.scrollWidth - track.clientWidth) / step),
+          )
+        : 0;
       setPosition((current) =>
         current.index === index && current.last === last
           ? current
@@ -62,11 +75,51 @@ export function Carousel({
   // Smoothness comes from the track's motion-safe:scroll-smooth class.
   const goTo = (index: number) => {
     const track = trackRef.current;
-    if (track) track.scrollTo({ left: index * stepOf(track) });
+    if (!track) return;
+    const step = stepOf(track);
+    if (!step) return;
+    const last = Math.max(
+      0,
+      Math.round((track.scrollWidth - track.clientWidth) / step),
+    );
+    const next = Math.min(Math.max(index, 0), last);
+    track.scrollTo({ left: next * step });
+  };
+
+  const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      goTo(position.index - 1);
+    } else if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      goTo(position.index + 1);
+    } else if (event.key === 'Home') {
+      event.preventDefault();
+      goTo(0);
+    } else if (event.key === 'End') {
+      event.preventDefault();
+      goTo(position.last);
+    }
   };
 
   return (
-    <div role="region" aria-roledescription="carousel" aria-label={label}>
+    <div
+      role="region"
+      aria-roledescription="carousel"
+      aria-label={label}
+      aria-describedby={hintId}
+      tabIndex={0}
+      onKeyDown={onKeyDown}
+      className="rounded-[2rem] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sage-dark"
+    >
+      <p id={hintId} className="sr-only">
+        {carouselLabels.hint}
+      </p>
+      <p id={liveId} aria-live="polite" aria-atomic="true" className="sr-only">
+        {carouselLabels.slide} {position.index + 1} {carouselLabels.of}{' '}
+        {position.last + 1}
+      </p>
+
       <ul
         ref={trackRef}
         className="-mx-3 -my-8 flex snap-x snap-mandatory scroll-px-3 [scrollbar-width:none] gap-5 overflow-x-auto overscroll-x-contain px-3 py-8 motion-safe:scroll-smooth [&::-webkit-scrollbar]:hidden"

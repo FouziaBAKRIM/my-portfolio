@@ -51,7 +51,7 @@ export function Skills() {
           className="mt-5 flex flex-col justify-between gap-6 rounded-3xl bg-navy p-6 text-cream sm:p-8 lg:flex-row lg:items-center lg:gap-12"
         >
           <div className="shrink-0 lg:max-w-xs">
-            <span className="mb-2 block font-mono text-[11px] font-semibold tracking-[0.25em] text-sage uppercase">
+            <span className="mb-2 block font-mono text-xs font-semibold tracking-[0.25em] text-sage uppercase">
               {skills.toolbox.eyebrow}
             </span>
             <h3 className="font-serif text-2xl font-medium tracking-tight">
@@ -71,7 +71,7 @@ export function Skills() {
                 key={tool.label}
                 className="inline-flex items-center gap-2 rounded-full border border-white/15 px-3.5 py-1.5 text-xs font-medium whitespace-nowrap transition-colors hover:border-sage"
               >
-                <span className="font-mono text-[10px] font-bold text-sage">
+                <span className="font-mono text-xs font-bold text-sage">
                   {tool.mark}
                 </span>
                 <span>{tool.label}</span>

@@ -18,7 +18,7 @@ export function Hero() {
       />
       <div className="relative container-page grid grid-cols-1 items-center gap-14 pt-14 pb-16 lg:grid-cols-12 lg:gap-16 lg:pt-20 lg:pb-24">
         <div className="flex flex-col items-start lg:col-span-7">
-          <span className="fade-slide-up mb-4 block font-mono text-[11px] font-semibold tracking-[0.25em] text-sage-dark uppercase">
+          <span className="fade-slide-up mb-4 block font-mono text-xs font-semibold tracking-[0.25em] text-sage-dark uppercase">
             {hero.eyebrow}
           </span>
           <h1 className="fade-slide-up mb-3 font-serif text-5xl leading-[1.05] font-medium tracking-tight text-navy delay-100 sm:text-6xl lg:text-7xl">
